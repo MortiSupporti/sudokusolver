@@ -24,7 +24,7 @@ kivy.require("1.9.0")
 ## ggf. danach ränder wegfiltern
 ## 
 ## android rechte photo und dateien
-## 1
+## 
 ## andere methode um bilder zu regeln
 
 
