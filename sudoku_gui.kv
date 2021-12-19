@@ -1,0 +1,82 @@
+<SudokuGUIStart>:
+    name: "start"
+    btn_00: btn_00
+    btn_01: btn_01
+    btn_02: btn_02
+    btn_03: btn_03
+    btn_04: btn_04
+    btn_05: btn_05
+    center_image: center_image
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+        GridLayout:     #top row
+            cols: 2
+            size_hint: (1, 0.2)
+            Button:
+                id: btn_00
+                text: "OPEN CAM"
+                font_size: 16
+                on_press: #center_image.reload()
+                on_release: root.switch_screen_to("camera")
+                size_hint: (0.5, 0.5)
+            Button:
+                id: btn_01
+                text: "SOLVE IT"
+                font_size: 16
+                on_press: #center_image.reload()
+                on_release: root.solve_sudoku()
+                size_hint: (0.5, 0.5)
+            Button:
+                id: btn_02
+                text: "ORIGINAL"
+                font_size: 16
+                on_press: #center_image.reload()
+                on_release: root.switch_screen_to("loaded")
+                size_hint: (0.5, 0.5)
+            Button:
+                id: btn_03
+                text: "SOLVED"
+                font_size: 16
+                on_press: #center_image.reload()
+                on_release: root.switch_screen_to("solved")
+                size_hint: (0.5, 0.5)
+        GridLayout:     # center
+            cols: 1
+            size_hint: (1, 0.7)
+            Image:
+                id: center_image
+                source: ""
+        GridLayout:     # bottom row
+            cols: 2
+            size_hint: (1, 0.1)
+            Button:
+                id: btn_04
+                text: "PLACEHOLDER_04"
+                font_size: 16
+                on_press: 
+                size_hint: (0.5, 1)
+            Button:
+                id: btn_05
+                text: "PLACEHOLDER_05"
+                font_size: 16
+                #on_press: root.solve_sudoku()
+                size_hint: (0.5, 1)
+
+<SudokuGUICamera>:
+    name: "start"
+    btn_take_photo: btn_take_photo
+    camera: camera
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+        Camera:
+            id: camera
+            play: True
+            size_hint: (1, 0.8)
+        Button:
+            id: btn_take_photo
+            text: "TAKE PHOTO"
+            on_press: root.capture_image()
+            size_hint: (1, 0.2)
+
