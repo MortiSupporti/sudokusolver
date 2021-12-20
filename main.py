@@ -96,7 +96,7 @@ def android_run(_):
     processes image, solves sudoku, shows sudoku
     temporarily creates images and cleans them at shutdown
     all within a bundled app"""
-    gui.gui_init("images/last_captured_image.png", "images/last_solved_image.png")
+    gui.gui_init("last_captured_image.png", "last_solved_image.png")
     sudoku_solver_inst = gui.SudokuSolverApp()
     sudoku_solver_inst.run()
     gui.shut_down_clean_up()

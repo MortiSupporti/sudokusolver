@@ -32,8 +32,8 @@ from kivy.config import Config
 Config.set('graphics', 'width', '400')
 Config.set('graphics', 'height', '700')
 sm = None
-capture_path = "images/last_captured_image.png"
-solve_path = "images/last_solved_image.png"
+capture_path = "last_captured_image.png"
+solve_path = "last_solved_image.png"
 
 class SudokuSolverApp(App):
     def __init__(self, **kwargs):
@@ -45,14 +45,14 @@ class SudokuSolverApp(App):
 class SudokuGUITemplate(Screen):
     gui_loaded_image = None
     gui_solved_image = None
+    busy_path = "busy.gif"
     capture_path = capture_path
     solve_path = solve_path
     target_dict = {
         "start":    "NO IMAGE DETECTED. LOAD IMAGE.",
         "loaded":   capture_path,
         "solved":   solve_path,
-        "busy":     "images/busy.gif",
-        "camera":   111}
+        "busy":     busy_path}
 
     def __init__(self, **kwargs):
         super(SudokuGUITemplate, self).__init__(**kwargs)
@@ -76,6 +76,7 @@ class SudokuGUITemplate(Screen):
         return
     
     def solve_sudoku(self):
+        self.switch_screen_to("busy")
         input_sudoku_pack = ir.image_proc_routine(self.gui_loaded_image)
         empty_sudoku = [x[:] for x in input_sudoku_pack[0]]
         sa.rsolv_recursive_solving(input_sudoku_pack[0])
@@ -91,7 +92,7 @@ class SudokuGUIStart(SudokuGUITemplate):
 class SudokuGUICamera(SudokuGUITemplate):
     pass
 
-def gui_init(input_capture_path="images/last_captured_image.png", input_solve_path="images/last_solved_image.png"):
+def gui_init(input_capture_path="last_captured_image.png", input_solve_path="last_solved_image.png"):
     global sm, capture_path, solve_path
     capture_path = input_capture_path 
     solve_path = input_solve_path
