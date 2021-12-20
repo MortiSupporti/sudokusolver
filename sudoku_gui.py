@@ -22,7 +22,7 @@ kivy.require("1.9.0")
 ## rahmen/frame bei camera screen
 ## danach logik fürs bild um nur den ausschnitt zu haben
 ## ggf. danach ränder wegfiltern
-## 
+## 1
 ## android rechte photo und dateien
 ## 
 ## andere methode um bilder zu regeln
