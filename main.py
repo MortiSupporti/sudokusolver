@@ -23,7 +23,7 @@ import sudoku_gui as gui
 
 def main():
     run_mode = 2
-    image_path = "images/bla.png"
+    image_path = "images/test_00.png"
     available_modes = [0,1,2]
     if len(sys.argv) > 2:
         run_mode, image_path = sys.argv[1:3]
@@ -33,7 +33,7 @@ def main():
     mode_cases = {
         0: terminal_only_run,
         1: graphical_run,
-        2: android_run}
+        2: gui_run}
     mode_cases[run_mode](image_path)
     return
 
@@ -87,16 +87,17 @@ def graphical_run(image_path):
 
     ir.display_image_and_wait(output_image)
 
-def android_run(_):
-    """android_run(_)
+def gui_run(_):
+    """gui_run(_)
     -> None
 
-    run for android
+    runs a full gui
     allows to take pictures of sudoku
+    allows image handling with file manager
     processes image, solves sudoku, shows sudoku
-    temporarily creates images and cleans them at shutdown
-    all within a bundled app"""
-    gui.gui_init("last_captured_image.png", "last_solved_image.png")
+    can save files to dised location
+    temporarily creates images and cleans them at shutdown"""
+    gui.gui_init()
     sudoku_solver_inst = gui.SudokuSolverApp()
     sudoku_solver_inst.run()
     gui.shut_down_clean_up()

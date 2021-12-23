@@ -153,7 +153,6 @@ def identify_grid(input_image):
     ## successfull contours will be exactly 81 because 9*9
     inverted_repaired_image = repair_lines(threshold_image, 9, invert=True)
     contours_of_image = get_contours_filtered(inverted_repaired_image)
-
     ## adjusts repair process if we detect a different amount of contours
     ## contours need to be 81
     ## else the process changes the iterations of eroding and dilating
@@ -348,11 +347,11 @@ def draw_number(input_image, coor, number):
 
     return output_image
 
-def save_output_image(output_image, image_path="images/last_solved_image.png"):
+def save_output_image(output_image, image_path_w_name="images/last_solved_image.png"):
     """save_output_image(output_image, image_path)
     -> None
     defaults: image_path="images/last_solved_image.png"
 
     saves image of solved sudoku to file system"""
-    cv2.imwrite(image_path, output_image)
+    cv2.imwrite(image_path_w_name, output_image)
     return
